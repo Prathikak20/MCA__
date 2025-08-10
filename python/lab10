@@ -1,0 +1,40 @@
+10.Write a function program to perform Binary search from the list. If the element is found,its location should be returned by the method,otherwise it should return -1.
+
+def binsearch(list1,key):
+    low=0
+    high=len(list1)-1
+    while(low<=high):
+        mid=(low+high)//2
+        if list1[mid]==key:
+            return mid
+        elif list1[mid]<key:
+            low=mid+1
+        else:
+            high=mid-1
+    return -1
+    
+n=int(input("Enter the no.of  elements:"))
+list1=[]
+for i in range(n):
+    element=int(input(f"Enter the elements{i+1}:"))
+    list1.append(element)
+list1=sorted(list1)
+print("After sorting:",list1)
+key=int(input("Enter the search element:"))
+res=binsearch(list1,key)
+if res==-1:
+    print("Element not found")
+else:
+    print("Element found at index:",res)
+	
+OUTPUT:
+Enter the no.of  elements:5
+Enter the elements1:5
+Enter the elements2:3
+Enter the elements3:1
+Enter the elements4:2
+Enter the elements5:4
+After sorting: [1, 2, 3, 4, 5]
+Enter the search element:4
+Element found at index: 3
+----------------------------------------------------------------------------

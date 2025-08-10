@@ -1,0 +1,35 @@
+3.Write a python program to display Student marks card in proper format.
+
+regno=int(input("Enter the student register no:"))
+name=input("Enter the student name:")
+m1=int(input("Enter the marks in maths:"))
+m2=int(input("Enter the marks in english:"))
+m3=int(input("Enter the marks in physics:"))
+total=m1+m2+m3
+avg=total/3
+if(m1<40 or m2<40 or m3<40):
+    res="FAIL"
+elif(avg>=90):
+    res="DISTINCTION"
+elif(avg>=80):
+    res="FIRST CLASS"
+elif(avg>=70):
+    res="SECOND CLASS"
+elif(avg>=60):
+    res="THIRD CLASS"
+else:
+    res="PASS"
+
+print("-------------------STUDENT MARKS DETAILS------------------------")
+print("RegNo\tName\tMaths\tEnglish\tPhysics\tTotal\tAverage\tResult")
+print(regno," ",name," ",m1," ",m2," ",m3," ",total," ",avg," ",res)
+
+
+Enter the student register no:101
+Enter the student name:Ria
+Enter the marks in maths:99
+Enter the marks in english:99
+Enter the marks in physics:99
+-------------------STUDENT MARKS DETAILS------------------------
+RegNo   Name    Maths   English Physics Total   Average Result
+101   Ria   99   99   99   297   99.0   DISTINCTION
