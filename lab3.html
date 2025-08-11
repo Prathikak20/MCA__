@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Cipher</title>
+    <script>
+        function encryption() {
+            var pt = cryptography.t1.value.toLowerCase();
+            var key = parseInt(cryptography.key.value);
+            var ct = "";
+            var alp = "abcdefghijklmnopqrstuvwxyz";
+
+            for (ch of pt) {
+               
+                    ct = ct+alp.charAt((alp.indexOf(ch) + key) % 26);
+                } 
+                
+            cryptography.res.value = ct;
+        }
+
+        function decryption() {
+            var ct = (cryptography.t1.value).toLowerCase();
+            var key = parseInt(cryptography.key.value);
+            var pt = "";
+            var alp = "abcdefghijklmnopqrstuvwxyz";
+
+            for (ch of ct) {
+    
+                    var index = alp.indexOf(ch)<key?(alp.indexOf(ch)-key)+26:(alp.indexOf(ch)-key);
+
+                    
+                    pt =pt+ alp.charAt(index);
+                
+            }
+            cryptography.res.value = pt;
+        }
+    </script>
+</head>
+<body>
+    <form name="cryptography" align="center">
+        <pre style="font-weight: bold; font-size: 18px;">
+Enter text: <input type="text" name="t1" size="30"><br>
+Enter key: <input type="number" name="key" size="5"><br>
+<input type="button" value="Encrypt" onclick="encryption()">
+<input type="button" value="Decrypt" onclick="decryption()"><br>
+Result: <input type="text" name="res" size="30"><br>
+        </pre>
+    </form>
+</body>
+</html>

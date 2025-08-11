@@ -1,0 +1,288 @@
+<html>
+<head>
+<script>
+function chkPalString(){
+    var st=gencal.t1.value;
+    var pat=/[^a-z]/ig;
+    var newst=st.replace(pat,"");
+    var revst=((newst.split("")).reverse()).join("");
+    alert(newst + "==" +revst );
+    //if(newst==revst) gencal.res.value="PALINDROME STRING"
+    // else gencal.res.value="IS NOT A PALINDROME STRING"
+
+    gencal.res.value=(newst==revst)?"PALINDROME STRING":"NOT PALINDROME STRING"
+}
+
+function chkPalnum()
+{
+    var num=parseInt(gencal.t1.value);
+    var strnum=num.toString();
+    var rev=strnum.split("").reverse().join("");
+    alert(strnum + "==" +rev );
+    gencal.res.value=(strnum==rev)?"PLINDROME NUMBER":"NOT PALINDROME NUMBER"
+}//end of palindrome nuumber function
+
+function chkprimenumber()
+{ 
+    
+    var num=parseInt(gencal.t1.value);
+    if (num <= 1) {
+        gencal.res.value = "Not Prime";
+        return;
+    }
+    for(var i=2;i<num;i++)
+{
+    if(num%i==0)
+    {
+        gencal.res.value="Not Prime";
+        return
+    }
+}   
+ gencal.res.value="Prime number"
+ 
+}//end of prime number function
+
+function genNprime() {
+    var result = "";
+    var num = parseInt(gencal.t1.value);
+
+    for (var i = 2; i <= num; i++) {
+        var isPrime = true;
+
+        for (var j = 2; j <i; j++) {
+            if (i % j == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime) {
+            result += i + " ";
+        }
+    }
+
+    gencal.res.value = result.trim();
+}
+//end of generating n prime
+
+function delsymb(){
+    var st=gencal.t1.value;
+    var pat=/[^a-z]/ig;
+    var newst=st.replace(pat,"");
+    gencal.res.value=newst
+}
+
+function countVowels()
+{
+    var st=gencal.t1.value;
+    var pat=/[aeiou]/ig
+    var vowels=st.match(pat);
+    gencal.res.value=vowels.length +" "+vowels;
+}
+
+function sum(){
+    var nos=gencal.t1.value;
+    var nosarray=nos.split(" ");
+    var rs=nosarray.reduce(add);
+    gencal.res.value=rs;
+}
+
+function add(n,s){
+    return parseInt(n)+parseInt(s);
+}
+
+function even(){
+    var nos=gencal.t1.value;
+    var nosarray=nos.split(" ");
+    var rs=nosarray.filter(evenno);
+    gencal.res.value=rs.toString();
+}
+
+function evenno(n)
+{
+    if(n%2==0)
+        return true;
+}
+function evenodd() {
+    var input = gencal.t1.value.trim();
+    var arr = input.split(" ").map(Number);
+
+    let evens = arr.filter(n => n % 2 === 0);
+    let odds  = arr.filter(n => n % 2 !== 0);
+
+    gencal.res.value =evens.join(" ") +" "+ odds.join(" ");
+}
+
+function mult5(){
+    var num=gencal.t1.value;
+    var numarray=num.split(" ");
+    var rs=numarray.map(multiply);
+    gencal.res.value=rs.toString();
+}
+
+function multiply(n)
+{
+    return n*5;
+}
+
+
+function delDupChars(){
+    var temp="";
+    var st=gencal.t1.value;
+    for(ch of st){
+        if(temp.indexOf(ch)==-1)
+            temp+=ch;
+    }
+    gencal.res.value=temp;
+}
+
+function delRepChars(){
+    var st=gencal.t1.value;
+    var result="";
+    for(ch of st){
+        if(st.indexOf(ch)==st.lastIndexOf(ch))
+            result=result+ch;
+    }
+    gencal.res.value=result;
+}
+
+
+function chklargestnum()
+{
+    var num = gencal.t1.value;
+    var resnum = num.split(" ").map(Number); // convert strings to numbers
+    var max = Math.max.apply(null, resnum); // apply passes array items as arguments
+    gencal.res.value = max;
+
+}
+function sortasc() {
+    var num = gencal.t1.value;
+    var resnum = num.split(" ").map(Number); // Convert to numbers
+    resnum.sort(function(a, b) { return a - b; }); // Ascending sort
+    gencal.res.value = resnum.join(" "); // Join back to string
+}
+
+function fibonacciSeries()
+{
+     var n = parseInt(gencal.t1.value); // Get number from textbox
+        var a = 0, b = 1, result = [];
+
+            for (let i = 0; i < n; i++) {
+                result.push(a);
+                let temp = a + b;
+                a = b;
+                b = temp;
+            }
+
+        gencal.res.value = result.join(" "); // Display in result textbox
+}
+
+function secondLargest() {
+   
+    var nums = gencal.t1.value.split(" ").map(Number);
+    var largest = -Infinity, secondLargest = -Infinity;
+
+    for (var num of nums) {
+        if (num > largest) {
+            secondLargest = largest;
+            largest = num;
+        } else if (num > secondLargest && num < largest) {
+            secondLargest = num;
+        }
+    }
+
+    gencal.res.value = (secondLargest === -Infinity) ? "Not enough numbers" : secondLargest;
+}
+
+
+function firstrep()
+{
+   var st = gencal.t1.value;
+    var seen = new Set();
+    for (let ch of st) {
+        if (seen.has(ch)) {  // already seen → first repeat found
+            gencal.res.value = ch;
+            return;
+        }
+        seen.add(ch);
+    }
+    gencal.res.value = "No repeated letter";
+
+}
+    
+function lastrep()
+{
+       var st=gencal.t1.value;
+    for(let i=st.length-1;i>=0;i--){
+        let ch=st[i];
+        if(st.indexOf(ch)!=st.lastIndexOf(ch)){
+            gencal.res.value=ch;
+            return;
+        }
+    }
+    gencal.res.value="No repeated letter";
+
+
+}
+
+function armstrong()
+{
+ var num=parseInt(gencal.t1.value);
+    var sum=0;
+    var temp=num;
+    var digits=num.toString().length;
+    while(temp>0){
+        let d=temp%10;
+        sum+=Math.pow(d,digits);
+        temp=Math.floor(temp/10);
+    }
+    gencal.res.value = (sum==num) ? "ARMSTRONG" : "NOT ARMSTRONG";
+
+}
+
+</script>
+
+</head>
+<div style="width: 600px; margin: auto; border: 2px solid #ba3480; border-radius: 15px; background-color: #d7c2d5;">
+<h1 style="text-align:center; color:darkblue;">General Calculator</h1><body>
+    <form name="gencal" align="center">
+        <pre style="font-weight: bold;  font-size: 18px;">
+Enter text <input type="text" name="t1"  />
+Result     <input type="text" name="res" />
+        </pre>
+
+        <table border="6" cellpadding="10" align="center">
+            <tr>
+                <th>Number Related</th>
+                <th>String Related</th>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="mult by 5" onclick="mult5()" /><br><br>
+                    <input type="button" value="even numbers" onclick="even()" /><br><br>
+                    <input type="button" value="find sum" onclick="sum()" /><br><br>
+                    <input type="button" value="palindrome number" onclick="chkPalnum()" /><br><br>
+                    <input type="button" value="prime number" onclick="chkprimenumber()" /><br><br>
+                    <input type="button" value="generate n primes" onclick="genNprime()" /><br><br>
+                    <input type="button" value="sort ascending" onclick="sortasc()" /><br><br>
+                    <input type="button" value="find largest" onclick="chklargestnum()" /><br><br>
+                    <input type="button" value="even & odd" onclick="evenodd()" /><br><br>
+                     <input type="button" value="Armstrong" onclick="armstrong()" /><br><br>
+                    <input type="button" value="fibonacci series" onclick="fibonacciSeries()" /><br><br>
+                    <input type="button" value="second largest" onclick="secondLargest()" /><br><br>
+                </td>
+                <td>
+                    <input type="button" value="count vowels" onclick="countVowels()" /><br><br>
+                    <input type="button" value="remove symbols" onclick="delsymb()" /><br><br>
+                    <input type="button" value="palindrome string" onclick="chkPalString()" /><br><br>
+                    <input type="button" value="remove duplicate chars" onclick="delDupChars()" /><br><br>
+                    <input type="button" value="remove repeated chars" onclick="delRepChars()" /><br><br>
+                    <input type="button" value="first repeated letter" onclick="firstrep()" /><br><br>
+                    <input type="button" value="last repeated letter" onclick="lastrep()" /><br><br>
+                </td>
+            </tr>
+        </table>
+    </form>
+    </div>
+</body>
+
+</html>

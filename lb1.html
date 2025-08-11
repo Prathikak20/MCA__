@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="lab1style.css" />
+    <script>
+        var op = "";
+        var value1 = "";
+        var memory = "";
+
+        function add() {
+            op = "+";
+            value1 = cal.acc.value;
+            cal.acc.value = "0";
+        }
+
+        function sub() {
+            op = "-";
+            value1 = cal.acc.value;
+            cal.acc.value = "0";
+        }
+
+        function mul() {
+            op = "*";
+            value1 = cal.acc.value;
+            cal.acc.value = "0";
+        }
+
+        function div() {
+            op = "/";
+            value1 = cal.acc.value;
+            cal.acc.value = "0";
+        }
+
+        function sqrt() {
+            op = "sqrt";
+            value1 = cal.acc.value;
+            res();
+        }
+
+        function reciprocal() {
+            var current = parseFloat(cal.acc.value);
+            if (current !== 0) {
+                cal.acc.value = 1 / current;
+            } else {
+                alert("Cannot divide by zero");
+            }
+        }
+
+        function res() {
+            switch(op) {
+                case "+":
+                    cal.acc.value = parseFloat(value1) + parseFloat(cal.acc.value);
+                    break;
+                case "-":
+                    cal.acc.value = parseFloat(value1) - parseFloat(cal.acc.value);
+                    break;
+                case "*":
+                    cal.acc.value = parseFloat(value1) * parseFloat(cal.acc.value);
+                    break;
+                case "/":
+                    cal.acc.value = parseFloat(value1) / parseFloat(cal.acc.value);
+                    break;
+                case "sqrt":
+                    cal.acc.value = Math.sqrt(parseFloat(value1));
+                    break;
+            }
+        }
+
+        function off() {
+            op = "";
+            value1 = "";
+            cal.acc.value = "";
+            memory = "";
+        }
+
+        function mc() {
+            memory = "";
+        }
+
+        function mr() {
+            if (memory !== "") {
+                cal.acc.value = memory;
+            }
+        }
+
+        function addDecimal() {
+            if (!cal.acc.value.includes(".")) {
+                cal.acc.value += ".";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="calculator-container">
+        <form name="cal">
+            <marquee>SIMPLE CALCULATOR</marquee>
+
+            <table border="1">
+                <tr>
+                    <th colspan="4">
+                        <input type="text" name="acc" value="0" readonly />
+                    </th>
+                </tr>
+                <tr>
+                    <td><input type="button" value="ON" /></td>
+                    <td><input type="button" value="MC" onclick="mc()" /></td>
+                    <td><input type="button" value="MR" onclick="mr()" /></td>
+                    <td><input type="button" value="OFF" onclick="off()" /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="1" onclick="cal.acc.value += '1'" /></td>
+                    <td><input type="button" value="2" onclick="cal.acc.value += '2'" /></td>
+                    <td><input type="button" value="3" onclick="cal.acc.value += '3'" /></td>
+                    <td><input type="button" value="+" onclick="add()" /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="4" onclick="cal.acc.value += '4'" /></td>
+                    <td><input type="button" value="5" onclick="cal.acc.value += '5'" /></td>
+                    <td><input type="button" value="6" onclick="cal.acc.value += '6'" /></td>
+                    <td><input type="button" value="-" onclick="sub()" /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="7" onclick="cal.acc.value += '7'" /></td>
+                    <td><input type="button" value="8" onclick="cal.acc.value += '8'" /></td>
+                    <td><input type="button" value="9" onclick="cal.acc.value += '9'" /></td>
+                    <td><input type="button" value="*" onclick="mul()" /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="0" onclick="cal.acc.value += '0'" /></td>
+                    <td><input type="button" value="." onclick="addDecimal()" /></td>
+                    <td><input type="button" value="=" onclick="res(); memory = cal.acc.value;" /></td>
+                    <td><input type="button" value="/" onclick="div()" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="button" value="√" onclick="sqrt()" style="width: 100%" /></td>
+                    <td colspan="2"><input type="button" value="1/x" onclick="reciprocal()" style="width: 100%" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
