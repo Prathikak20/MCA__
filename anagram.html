@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function chkAnagram(){
+            var st1=form.t1.value;
+            var st2=form.t2.value;
+            var angagram=true
+            if(st1.length!=st2.length){
+                anagram=false;
+            }
+            else{
+            if(((st1.split("")).sort()).toString()!=((st2.split("")).sort()).toString())
+              angagram=false;
+            }
+
+            form.res.value=angagram?"Anagram":"Not Anagram";
+        }
+    
+    </script>
+</head>
+<body>
+    <form name="form">
+        <input type="text" name="t1">
+        <input type="text" name="t2">
+        <input type="button" value="Check" onclick="chkAnagram()">
+        <input type="text" name="res" readonly>
+    </form>
+</body>
+</html>
