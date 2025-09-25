@@ -70,8 +70,22 @@ con.connect(function(err){
 
 
 
-sql="SELECT * FROM employee";
+// sql="SELECT * FROM employee";
+// con.query(sql,function(err,result){
+//     if(err) throw err;
+//     console.log(result);
+// });
+
+
+sql="update employee set empname='Aadhya M' where empno='102'";
 con.query(sql,function(err,result){
     if(err) throw err;
-    console.log(result);
-});
+    console.log(result.affectedRows+" record(s) updated");
+}); 
+
+
+// sql="DELETE FROM employee WHERE empno='101'";
+// con.query(sql,function(err,result){
+//     if(err) throw err;
+//     console.log(result.affectedRows+" record(s) deleted");
+// });
